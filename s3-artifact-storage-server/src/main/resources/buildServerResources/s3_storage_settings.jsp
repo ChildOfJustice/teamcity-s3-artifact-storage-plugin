@@ -39,6 +39,8 @@
 <l:settingsGroup title="S3 Parameters">
 
   <c:set var="bucket" value="${propertiesBean.properties[params.bucketName]}"/>
+    <c:set var="myTestVar" value="${propertiesBean.properties['sardor.test']}"/>
+    <c:set var="testVar" value="${propertiesBean.properties['storage.s3.bucket.name']}"/>
   <props:selectSectionProperty name="${params.bucketNameWasProvidedAsString}" title="Specify S3 bucket:">
     <props:selectSectionPropertyContent value="" caption="Choose from list">
       <tr class="non_serializable_form_elements_container noBorder">
@@ -69,7 +71,11 @@
   </props:selectSectionProperty>
   <c:if test="${pathPrefixesFeatureOn or propertiesBean.properties[params.pathPrefix]}">
     <tr>
-      <th><label for="${params.pathPrefix}">S3 path prefix: </label></th>
+      <th><label for="${params.pathPrefix}">S3 path prefix: </label>
+          <label>
+              <input value="!!!HERE -> ${myTestVar} and their: ${testVar}">
+          </label>
+      </th>
       <td>
         <props:textProperty name="${params.pathPrefix}" id="${params.pathPrefix}" className="longField" value="${propertiesBean.properties[params.pathPrefix]}"/>
         <span class="smallNote">Specify the path prefix</span>
